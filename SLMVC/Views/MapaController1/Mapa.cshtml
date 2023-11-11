@@ -59,27 +59,23 @@
 
         async function initMap() {
             // The location of Uluru
-            const position = { lat: 19.4303622, lng: -99.1616508 };
+            const position = { lat:23.15276932, lng:105 };
             // Request needed libraries.
             const { Map } = await google.maps.importLibrary("maps");
             const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
 
             // The map, centered at Uluru
             map = new Map(document.getElementById("map"), {
-                zoom: 10,
+                zoom: 14,
                 center: position,
                 mapId: "DEMO_MAP_ID",
             });
 
         @foreach (ML.GeoReferencia geo in Model.GeoReferencias)
         {
-            
             <text>
-            var direccion = @geo.Longitud.ToString();
-            var dir = @geo.Latitud.ToString();
-            
                                             var geocoder = new google.maps.Geocoder();
-                geocoder.geocode({ 'address': '19.427347,-99.149940' }, function (results, status) {
+                geocoder.geocode({ 'address': '@geo.Latitud,@geo.Longitud' }, function (results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
                         var direccion = { lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng() };
                         new google.maps.Marker({

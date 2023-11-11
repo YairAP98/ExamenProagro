@@ -11,7 +11,7 @@ namespace SL.Controllers
             [Route("GetAllGeo")]
             public ActionResult GetAll()
             {
-                ML.Result result = BL.Permisos.GetAll();
+                ML.Result result = BL.GeoReferencia.GetAll();
 
                 if (result.Correct)
                 {
